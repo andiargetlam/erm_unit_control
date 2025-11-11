@@ -6,7 +6,7 @@ local Commands = require("script/uc_commands")
 local Indicators = require("script/uc_indicators")
 -- FIX: Removed this require to break the circular dependency.
 -- We will "lazy load" it inside the button click handlers.
--- local Movement = require("script/uc_movement") 
+local SharedMovement = require("script/uc_shared_movement") 
 local util = require("script/script_util")
 
 local next_command_type = Core.next_command_type
@@ -422,14 +422,18 @@ local gui_actions =
     player.cursor_stack.set_stack{name = tool_names.unit_follow_tool}
   end,
   hold_position_button = function(event)
-    -- FIX: "Lazy load" the Movement module here
-    local Movement = require("script/uc_movement")
-    Movement.hold_position_group(game.get_player(event.player_index), event.shift)
+    local group = Module.Selection.get_selected_units(event.player_index)
+    if not group then
+      return
+    end
+    SharedMovement.hold_position_group(game.get_player(event.player_index), event.shift, group)
   end,
   stop_button = function(event)
-    -- FIX: "Lazy load" the Movement module here
-    local Movement = require("script/uc_movement")
-    Movement.stop_group(game.get_player(event.player_index), event.shift)
+    local group = Module.Selection.get_selected_units(event.player_index)
+    if not group then
+      return
+    end
+    SharedMovement.stop_group(game.get_player(event.player_index), event.shift, group)
   end,
   scout_button = function(event)
     local group = Module.Selection.get_selected_units(event.player_index)
