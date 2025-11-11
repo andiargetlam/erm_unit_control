@@ -100,7 +100,7 @@ local select_all_units_hotkey = function(event)
   }
   
   -- Apply selection limit
-  local limit = settings.global["erm-unit-control-selection-limit"].value
+  local limit = script_data.max_selectable_units_limit
   if #entities > limit then
     -- Sort by distance to cursor
     local cursor_pos = event.cursor_position
