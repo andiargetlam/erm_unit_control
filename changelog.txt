@@ -1,8 +1,34 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.1.7
+Date: 2025-11-27
+
+  Bugfixes:
+    - Fixed a crash when player try to select during the respawn phase.
+
+---------------------------------------------------------------------------------------------------
+Version: 1.1.6
+Date: 2025-11-26
+
+  Bugfixes:
+    - Fixed an issue on unit follow function.
+
+---------------------------------------------------------------------------------------------------
+Version: 1.1.5
+Date: 2025-11-25
+
+  Changes:
+    - Patrols are now able to perform reactive defense.
+    - Unit will resume their original command after completing reactive defense. e.g resuming patrol.
+    - Patrol unit will stop for up to X seconds (configurable, 10 second by default) after they reach the destination. This allows repair bots to catch up for repairing.
+
+  Bugfixes:
+    - Fixed an issue that [follow command wait interval] setting cache has not override properly.
+
+---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 2025-11-23
 
-  Features:   
+  Features:
     - Everybody! Hail to [Hawke] for adding these new features!
     - Added Control Groups functions. You can have up to 9 control groups. Support hotkeys.
     - Added hunter strategy (Experimental), automatically hunt nearby enemy entities. [Default: off]
@@ -15,7 +41,7 @@ Date: 2025-11-23
     - Changed remote interface name from __erm_unit_control__ to erm_unit_control. Same as the info.json name for consistency.
     - Added back "Follow target" button on UI since following target performance issue has been resolved.   
 
-  Bugfixes: 
+  Bugfixes:
     - Fixed follow command performance issue when the target entity stopped moving.
     - Fixed select unit may sometime prevent world interaction.
     - Fixed select unit item appears in logicstic request window.

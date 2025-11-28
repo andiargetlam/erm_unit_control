@@ -1,6 +1,6 @@
 ﻿This is a fork of Klonan's Unit Control.  It has updated for 2.0.  New features have been added in 1.1 build.
 
-It primary targets ERM controllable units.  But it should work for 3rd party unit that support original unit control.
+It primary targets ERM controllable units.  But it should work any "unit" type from 3rd party unit mods.
 
 ### New Features: (Developed by [Hawke] & heyqule)
 - Manage up to 9 control groups with hotkeys.
@@ -12,7 +12,7 @@ It primary targets ERM controllable units.  But it should work for 3rd party uni
 
 ### How to use:
 - **Select all unit in X radius:** Shift+Alt+left click
-- **Select all unit of same type in X radius:** Double left click on a unit. 
+- **Select all unit of same type in X radius:** Double left click on a unit.
 - **Attack Move:**  Select unit > right click on destination. (orange dotted line indicator)
 - **Go to destination(non-attack move):**  Select unit > double right click on destination. (green dotted line indicator)
 - **Multiple Waypoints attack move:** Select unit > hold shift and right click on destinations.
@@ -20,7 +20,7 @@ It primary targets ERM controllable units.  But it should work for 3rd party uni
 - **Scout:** select unit, click scout button and they will move in all directions
 - **Follow Target** select unit, click follow target button, click on any friendly entity with health and they will follow.  Alt: Shift + right-click on the follow target.
 - **Hunting Mode** select unit, click hunting mode button, they will search nearby enemy entity to kill.
-- **Reactive Defense** Move units to an active warzone. When an entity dies nearby, they'll march to that location, then return to original location after mission completed.
+- **Reactive Defense** Move units to an active warzone. When certain building type dies nearby, they'll march to that location, then return to original location (with small offset) after mission completed.
 - **Perimeter Defense** WIP.
 
 

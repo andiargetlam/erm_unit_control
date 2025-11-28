@@ -135,7 +135,7 @@ local block_by_opened_gui = {
 local can_left_click = function(player, shift)
   -- FIX: MOVED CURSOR CHECKS TO TOP
   -- 1. Check for physical items (Stack)
-  if player.cursor_stack.valid_for_read then return end
+  if player.cursor_stack and player.cursor_stack.valid_for_read then return end
   -- 2. Check for Ghost items (Pipette)
   if player.cursor_ghost then return end
   -- 3. Check for Blueprint Library Records (Book fix)
@@ -314,7 +314,7 @@ end
 
 local on_tick = function(event)
   Commands.process_attack_register(event.tick)
-  GUI.check_refresh_gui()
+  GUI.check_refresh_gui(event.tick)
 end
 
 -- FIX: Run the post-load setup safely inside on_tick
@@ -429,7 +429,8 @@ local setting_map = {
 }
 
 local setting_function = {
-  ["erm-unit-control-follow-command-wait"] = Core.set_follow_unit_wait_time
+  ["erm-unit-control-follow-command-wait"] = Core.set_follow_unit_wait_time,
+  ["erm-unit-control-patrol-command-wait"] = Core.set_patrol_unit_wait_time
 }
 
 local on_runtime_mod_setting_changed = function(event)
@@ -562,6 +563,7 @@ unit_control.on_init = function()
   storage.unit_control.unit_names = {}
 
   Core.set_follow_unit_wait_time()
+  Core.set_patrol_unit_wait_time()
   set_map_settings()
   reset_gui()
 end
@@ -580,8 +582,8 @@ unit_control.on_configuration_changed = function(configuration_changed_data)
   
   -- Now script_data, Core.script_data, and storage.unit_control
   -- all point to the same, correct, migrated table.
-
   Core.set_follow_unit_wait_time()
+  Core.set_patrol_unit_wait_time()
   set_map_settings()
   reset_gui()
   migrated_data.last_location = migrated_data.last_location or {}
